@@ -16,6 +16,8 @@ def get_buffer_points(point:Point, buffer:float=30, res:float=30):
     Gets the soil data all the points centered in the area formed by the buffer on
     the point centered at lon, lat. The buffer is in meters, so lon, lat must be in
     a crs in meters.
+
+    It returns a list of (x, y) pairs.
     '''
     point_x, point_y = point.x, point.y
 
@@ -31,25 +33,4 @@ def get_buffer_points(point:Point, buffer:float=30, res:float=30):
         points
     )
     return list(points)
-
-
-
-def get_data_on_points(points:gpd.GeoDataFrame, rst_dir:str, dataset:str='isda',
-                       buffer:float=30, res:float=30):
-    '''
-    
-    '''
-    soil_props = PROPS[dataset]
-    values = {}
-    for prop in soil_props:
-        rast = rio.open(f'/{rst_dir}/{prop}.tif')
-        points = points.to_crs(rast.crs)
-        values[prop] = {}
-        for idx, row in points.iterrows():
-            buffer_points = list(
-                get_buffer_points(row.geometry, buffer=buffer, res=res)
-            )
-            values[prop][idx] = list(rast.sample(buffer_points))
-        print(f'{prop} values extracted')
-    return values
 

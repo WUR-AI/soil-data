@@ -1,4 +1,4 @@
-from .download import download_isda_rasters
+from .download import download_isda_raster
 
 
 
