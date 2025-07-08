@@ -1,6 +1,13 @@
 # Soils data
 
 A set of scripts to download and process gridded soil data from global and regional databases.
+The package can be installed with pip directly from this repo:
+
+```
+git clone https://github.com/WUR-AI/soil-data.git
+cd soil-data
+pip install -e .
+```
 Next datasets are included:
  
 ## [ISDASoil](https://www.isda-africa.com/isdasoil/)
