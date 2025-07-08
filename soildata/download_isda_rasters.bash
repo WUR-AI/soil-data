@@ -3,6 +3,7 @@
 # ==============================================================================
 # Download multiple remote raster files for a list of soil properties using a
 # specified bounding box.
+# This uses functions from the gdal package, so it must be installed first.
 #
 # Usage:
 #   ./download_rasters.sh <dest_folder> <min_lon> <max_lat> <max_lon> <min_lat>
